@@ -46,16 +46,60 @@ TODO: Add CLI usage
 
 ## Structure
 
-    domain/todo.cr: Contains the core domain entities representing the business logic.
-    domain/inputport.cr: Defines the contract for external interactions with the application.
-    domain/outputport.cr: Defines the contract for the application's interactions with external systems.
-    application/repositories/inmemory.cr: Implements the repository interface for storing ToDo items in memory.
-    ports/console_output.cr: Implements the output port to interact with the console.
-    domain/todoservices.cr: Implements the business logic and use cases.
+* domain/todo.cr: Contains the core domain entities representing the business logic.
+* domain/inputport.cr: Defines the contract for external interactions with the application.
+* domain/outputport.cr: Defines the contract for the application's interactions with external systems.
+* application/repositories/inmemory.cr: Implements the repository interface for storing ToDo items in memory.
+* ports/console_output.cr: Implements the output port to interact with the console.
+* domain/todoservices.cr: Implements the business logic and use cases.
 
 ## Dependencies
 
 This project has no external dependencies beyond the Crystal standard library.
+
+## Roadmap
+
+- [x] Initialize Hexagonal Architecture.
+- [ ] Add CLI usage (with option-parser)
+- [ ] Add HTTP usage
+  1. [ ] Add server (with http/server)
+  2. [ ] Add page (with ECR)
+  3. [ ] Bonus : Add HTMX integration
+- [ ] Add repository in file (with File, JSON, YAML)
+  1. [ ] Add JSON repository
+  2. [ ] Add YAML repository
+
+To go further, with external libraries
+
+- [ ] Add Port with `action-controller`
+- [ ] Add repository implementations:
+  1. [ ] SQLite (with `crystal-db`)
+  2. [ ] RethinkDB
+- [ ] Design CLI to use API Port
+  - [ ] make OPENAPI API with `action-controller`
+  - [ ] make CLI client
+- [ ] Add ToDo fields:
+  1. [ ] Add Status ENUM to ToDo
+  2. [ ] Add full description to ToDo
+- [ ] Add user management
+  1. [ ] Signup/signin/logout
+  2. [ ] Add author to ToDo
+  3. [ ] Add assign to ToDo
+- [ ] Add due date 
+- [ ] Add labels or tags
+- [ ] Add milestone to group ToDo
+- [ ] Add dependencies between ToDo
+- [ ] Add Product to group ToDo and user
+- [ ] Add subtask to ToDo
+
+Bonus
+
+- [ ] Add Trophy :
+  1. [ ] the most closed ToDo
+  2. [ ] the most open ToDo
+  3. [ ] the same by milestone
+
+
 
 ## Development
 
