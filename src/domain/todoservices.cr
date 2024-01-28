@@ -17,20 +17,24 @@ require "./outputport"
 # ## Methods
 #
 # - `get_all_todos : Array(Todo)`
+#
 #   Retrieves all todos from the repository and displays them.
 #   Returns an array of Todo objects representing all the todos retrieved from the repository.
 #
 # - `get_todo_by_id(id : Int32) : Todo?`
+#
 #   Retrieves a todo with the given id from the repository and displays its details.
 #   - `id` - The id of the todo to retrieve.
 #   Returns a Todo object representing the todo with the given id, or nil if no todo is found.
 #
 # - `create_todo(title : String) : Todo`
+#
 #   Creates a new todo with the given title, saves it to the repository, and displays the created todo.
 #   - `title` - The title of the new todo.
 #   Returns a Todo object representing the newly created todo.
 #
 # - `mark_todo_as_completed(todo : Todo) : Todo`
+#
 #   Marks the given todo as completed and displays the completed todo.
 #   - `todo` - The todo to mark as completed.
 #   Returns a Todo object representing the todo that was marked as completed.
