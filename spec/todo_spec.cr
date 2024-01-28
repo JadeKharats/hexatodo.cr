@@ -89,4 +89,3 @@ describe TodoService do
     todo.title.should eq "pikafe"
   end
 end
-
