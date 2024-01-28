@@ -60,6 +60,7 @@ This project has no external dependencies beyond the Crystal standard library.
 ## Roadmap
 
 - [x] Initialize Hexagonal Architecture.
+- [ ] Generate documentation with `crystal docs` command
 - [ ] Add CLI usage (with option-parser)
 - [ ] Add HTTP usage
   1. [ ] Add server (with http/server)
