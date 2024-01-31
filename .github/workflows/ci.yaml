@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: shards build --production
       - name: Specs
-        run: crystal spec --order random --error-on-warnings --verbose
+        run: crystal spec --error-on-warnings --verbose
   test_nightly:
     runs-on: ubuntu-latest
     container:
@@ -47,7 +47,7 @@ jobs:
       - name: Build
         run: shards build --production
       - name: Specs
-        run: crystal spec --order random --error-on-warnings --verbose
+        run: crystal spec --error-on-warnings --verbose
   deploy_docs:
     runs-on: ubuntu-latest
     container:
