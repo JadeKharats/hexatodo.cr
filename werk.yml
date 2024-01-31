@@ -1,0 +1,28 @@
+version: "1.0"
+
+max_jobs: 5
+
+jobs:
+  dependencies:
+    executor: local
+    commands:
+      - shards install
+
+  spec:
+    executor: local
+    commands:
+      - crkcov --output
+    needs:
+      - lint
+      - format
+
+  lint:
+    executor: local
+    commands:
+      - ameba
+
+  format:
+    executor: local
+    commands:
+      - crystal tool format
+

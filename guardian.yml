@@ -1,0 +1,5 @@
+files: ./**/*.cr
+run: werk run spec
+---
+files: ./shard.yml
+run: werk run dependencies
