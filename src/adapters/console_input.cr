@@ -1,5 +1,5 @@
-require "../domain/inputport"
-require "../domain/todoservices"
+require "../domain/ports/todo_input"
+require "../domain/services/todo_services"
 
 class ConsoleTodoInputPort < TodoInputPort
   property service : TodoService
@@ -7,11 +7,11 @@ class ConsoleTodoInputPort < TodoInputPort
   def initialize(@service : TodoService)
   end
 
-  def get_all_todos : Array(Todo)
-    service.get_all_todos
+  def all_todos : Array(Todo)
+    service.all_todos
   end
 
-  def get_todo_by_id(id : Int32) : Todo?
+  def get_todo_by_id(id : String) : Todo?
     service.get_todo_by_id(id)
   end
 

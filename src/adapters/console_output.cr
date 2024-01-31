@@ -1,4 +1,4 @@
-require "../domain/outputport"
+require "../domain/ports/todo_output"
 
 class ConsoleTodoOutputPort < TodoOutputPort
   getter io : IO
