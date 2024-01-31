@@ -5,28 +5,46 @@ on:
     branches: [ "main" , "ci"]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: "0 19 * * SAT"
 
 jobs:
-  spec:
+  check_format:
     runs-on: ubuntu-latest
     container:
-      image: crystallang/crystal
+      image: crystallang/crystal:latest-alpine
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: shards install
-    - name: Run tests
-      run: crystal spec
-    - name: Run format
-      run: crystal tool format --check
-  
-  build:
+      - uses: actions/checkout@v3
+      - name: Format
+        run: crystal tool format --check
+
+  coding_standards:
     runs-on: ubuntu-latest
     container:
-      image: crystallang/crystal
+      image: crystallang/crystal:latest-alpine
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: shards install
-    - name: shards build
-      run: shards build --release --no-debug --production
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: shards install
+      - name: Ameba
+        run: ./bin/ameba
+  test_latest:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:latest-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: shards build --production
+      - name: Specs
+        run: crystal spec --order random --error-on-warnings
+  test_nightly:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:nightly-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: shards build --production
+      - name: Specs
+        run: crystal spec --order random --error-on-warnings
