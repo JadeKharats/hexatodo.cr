@@ -48,3 +48,18 @@ jobs:
         run: shards build --production
       - name: Specs
         run: crystal spec --order random --error-on-warnings --verbose
+  deploy_docs:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:latest-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: crystal docs
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          SINGLE_COMMIT: true
