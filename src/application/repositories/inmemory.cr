@@ -1,4 +1,4 @@
-require "../../domain/repository"
+require "../../domain/ports/todo_repository"
 
 # InMemoryTodoRepository is a class that represents an in-memory implementation of a TodoRepository.
 # It extends the TodoRepository class and provides methods for finding and saving todos.
@@ -25,9 +25,9 @@ class InMemoryTodoRepository < TodoRepository
 
   # Finds a todo by its ID.
   #
-  # @param id [Int32] The ID of the todo to find.
+  # @param id [String] The ID of the todo to find.
   # @return [Todo?] The todo with the matching ID, or `nil` if not found.
-  def find_by_id(id : Int32) : Todo?
+  def find_by_id(id : String) : Todo?
     todos.find { |todo| todo.id == id }
   end
 

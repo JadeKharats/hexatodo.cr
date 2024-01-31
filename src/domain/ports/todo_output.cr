@@ -1,4 +1,4 @@
-require "./todo"
+require "../models/todo"
 
 # Abstract class representing a Todo output port.
 #
@@ -9,7 +9,7 @@ require "./todo"
 # - `display_todo_completed`: Displays a message indicating that a todo has been completed.
 #
 # Example Usage:
-# ```crystal
+# ```
 # class ConsoleOutputPort < TodoOutputPort
 #   def display_todos(todos : Array(Todo))
 #     todos.each do |todo|

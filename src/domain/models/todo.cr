@@ -3,7 +3,7 @@
 # Represents a todo item.
 #
 # ## Properties
-# - `id` (type: `Int32`): The unique identifier of the todo item.
+# - `id` (type: `String`): The unique identifier of the todo item.
 # - `title` (type: `String`): The title or description of the todo item.
 # - `completed` (type: `Bool`, optional): Indicates whether the todo item is completed or not.
 #
@@ -15,12 +15,12 @@
 # puts todo.completed # Output: false
 #
 # ## Public Methods
-# - `new(id : Int32, title : String, completed : Bool)`: Initializes a new instance of the `Todo` class with the provided values for `id`, `title`, and `completed`.
+# - `new(id : String, title : String, completed : Bool)`: Initializes a new instance of the `Todo` class with the provided values for `id`, `title`, and `completed`.
 class Todo
-  property id : Int32
+  property id : String
   property title : String
   property? completed : Bool
 
-  def initialize(@id : Int32, @title : String, @completed : Bool)
+  def initialize(@id : String, @title : String, @completed : Bool)
   end
 end

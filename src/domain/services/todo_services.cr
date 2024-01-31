@@ -1,5 +1,6 @@
-require "./repository"
-require "./outputport"
+require "../ports/todo_repository"
+require "../ports/todo_output"
+require "uuid"
 
 # # TodoService
 #
@@ -21,7 +22,7 @@ require "./outputport"
 #   Retrieves all todos from the repository and displays them.
 #   Returns an array of Todo objects representing all the todos retrieved from the repository.
 #
-# - `get_todo_by_id(id : Int32) : Todo?`
+# - `get_todo_by_id(id : String) : Todo?`
 #
 #   Retrieves a todo with the given id from the repository and displays its details.
 #   - `id` - The id of the todo to retrieve.
@@ -52,7 +53,7 @@ class TodoService
   # Retrieves all todos from the repository and displays them.
   #
   # @return [Array(Todo)] An array of Todo objects representing all the todos retrieved from the repository.
-  def get_all_todos : Array(Todo)
+  def all_todos : Array(Todo)
     todos = repository.find_all
     output_port.display_todos(todos)
     todos
@@ -60,9 +61,9 @@ class TodoService
 
   # Retrieves a todo with the given id from the repository and displays its details.
   #
-  # @param id [Int32] The id of the todo to retrieve.
+  # @param id [String] The id of the todo to retrieve.
   # @return [Todo?] A Todo object representing the todo with the given id, or nil if no todo is found.
-  def get_todo_by_id(id : Int32) : Todo?
+  def get_todo_by_id(id : String) : Todo?
     todo = repository.find_by_id(id)
     output_port.display_todo_details(todo) if todo
     todo
@@ -73,7 +74,7 @@ class TodoService
   # @param title [String] The title of the new todo.
   # @return [Todo] A Todo object representing the newly created todo.
   def create_todo(title : String) : Todo
-    todo = Todo.new(repository.find_all.size + 1, title, false)
+    todo = Todo.new(UUID.random.to_s, title, false)
     repository.save(todo)
     output_port.display_todo_created(todo)
     todo

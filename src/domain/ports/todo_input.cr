@@ -1,11 +1,11 @@
-require "./todo"
+require "../models/todo"
 
 # Abstract class representing a Todo Input Port.
 #
 # This abstract class defines a set of abstract methods for managing todos.
 #
 # Example Usage:
-# ```crystal
+# ```
 # # Create a concrete implementation of TodoInputPort
 # class TodoInputPortImpl < TodoInputPort
 #   def get_all_todos : Array(Todo)
@@ -41,8 +41,8 @@ require "./todo"
 # - The `create_todo` method returns a newly created todo object.
 # - The `mark_todo_as_completed` method returns the updated todo object.
 abstract class TodoInputPort
-  abstract def get_all_todos : Array(Todo)
-  abstract def get_todo_by_id(id : Int32) : Todo?
+  abstract def all_todos : Array(Todo)
+  abstract def get_todo_by_id(id : String) : Todo?
   abstract def create_todo(title : String) : Todo
   abstract def mark_todo_as_completed(todo : Todo) : Todo
 end
