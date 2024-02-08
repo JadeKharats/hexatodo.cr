@@ -61,7 +61,7 @@ This project has no external dependencies beyond the Crystal standard library.
 
 - [x] Initialize Hexagonal Architecture.
 - [ ] Generate documentation with `crystal docs` command
-- [ ] Add CLI usage (with option-parser)
+- [x] Add CLI usage (with option-parser)
 - [ ] Add HTTP usage
   1. [ ] Add server (with http/server)
   2. [ ] Add page (with ECR)
